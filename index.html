@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sunny Western — Règlement</title>
+<style>
+:root{--bg:#101214;--box:#191c20;--box2:#22262b;--gold:#784223;--text:#faf3e7;--muted:#bcb5aa;--line:#3a3021}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(135deg,#353434,#000000 40%);color:var(--text);font-family: "Mont", sans-serif;font-size: 18px;line-height:1.6}
+header{padding:55px 22px;text-align:center;border-bottom:1px solid var(--line)}
+header h1{font:700 clamp(38px,7vw,70px)/1 Georgia,serif;margin:15px 0;color:var(--gold)}
+header p{max-width:760px;margin:10px auto;color:var(--muted)}
+.lienclic{display:inline-block;margin-top:15px;padding:10px 16px;border:1px solid var(--gold);border-radius:8px;color:var(--gold);text-decoration:none}
+.container{max-width:1150px;margin:auto;padding:28px 18px 60px;display:grid;grid-template-columns:250px 1fr;gap:22px}
+.menu{background:var(--box);border:1px solid var(--line);border-radius:14px;padding:14px;height:max-content;position:sticky;top:15px}
+.menu-title{color:var(--gold);font-weight:bold;margin:4px 8px 12px}
+.tab{width:100%;display:block;padding:12px 13px;margin:5px 0;background:transparent;border:1px solid transparent;border-radius:8px;color:var(--muted);text-align:left;font-size:15px;cursor:pointer}
+.tab:hover{background:var(--box2);color:#fff}
+.tab.active{background:#332918;border-color:var(--gold);color:var(--gold);font-weight:bold}
+.content{min-width:0}
+.panel{display:none;background:var(--box);border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 15px 40px #0005}
+.panel.active{display:block}
+.menu-grid {display: grid;grid-template-columns: repeat(3, 1fr);gap: 14px;margin-top: 20px;}
+.menu-card {display: flex;align-items: center;min-height: 54px;padding: 0 16px;box-sizing: border-box;border: 1px solid #333;border-radius: 5px;background: #1c1c1c;color: #f1f1f1;text-decoration: none;font-weight: 600;transition: 0.2s ease;}
+.menu-card:hover {background: #252525; border-color: #555; transform: translateY(-2px);}
+h2{font:700 30px "Mont", sans-serif;color:var(--gold);margin:0 0 20px}
+h3{font:700 24px "Mont", sans-serif;color:var(--gold);margin:0 0 20px}
+h4{font:700 20px "Mont", sans-serif;color:var(--gold);margin:0 0 20px}
+.rule{padding:13px 15px;margin:9px 0;background:var(--box2);border-radius:8px;border-left:3px solid var(--gold)}
+.rule.danger{border-left-color:#b95d50}
+.notice{padding:15px;background:#2b2418;border-left:4px solid var(--gold);border-radius:7px;margin:18px 0}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{background:var(--box2);padding:18px;border-radius:10px}
+.card b{color:var(--gold)}
+.sub-rule {margin-left: 30px;}
+.sub-rule-2 {margin-left: 60px;}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:13px}
+footer a{color:var(--gold)}
+.lexique-terme{color:#979795;}
+@media(max-width:800px){
+ .container{display:block}
+ .menu{position:static;margin-bottom:15px}
+ .menu-buttons{display:none}
+ .menu-group.open .menu-buttons{display:block}
+ .tab{margin:0}
+ .cards{grid-template-columns:1fr}
+}
+.menu-group {
+    margin-bottom: 8px;
+}
+.menu-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: none;
+    background: transparent;
+    color: #f1f1f1;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+}
+.menu-title span {
+    font-size: 14px;
+    transition: transform 0.2s ease;
+}
+.menu-buttons {
+    display: none;
+    padding-left: 8px;
+}
+.menu-group.open .menu-buttons {
+    display: block;
+}
+.menu-group.open .menu-title span {
+    transform: rotate(180deg);
+}
+.menu-buttons .tab {
+    width: 100%;
+    display: block;
+    text-align: left;
+    padding: 9px 14px;
+}
+@media(max-width:500px){
+ .menu-buttons{display:none}
+ .menu-group.open .menu-buttons{display:block}
+ .panel{padding:20px}
+}
+
+/* =========================
+   EFFETS AU SURVOL
+========================= */
+
+/* Boutons du menu */
+.tab{
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tab:hover{
+    background:var(--box2);
+    color:#fff;
+    border-color:var(--gold);
+    transform:translateX(4px);
+    box-shadow:0 4px 12px #0005;
+}
+
+.tab.active{
+    box-shadow:0 3px 10px #0004;
+}
+
+/* Titres des menus déroulants */
+.menu-title{
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menu-title:hover{
+    background:var(--box2);
+    color:var(--gold);
+}
+
+/* Petite animation de la flèche */
+.menu-title span{
+    transition:transform 0.25s ease;
+}
+
+/* Cartes de la page d'accueil */
+.menu-card{
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.menu-card:hover{
+    background:#252525;
+    border-color:var(--gold);
+    color:var(--gold);
+    transform:translateY(-3px);
+    box-shadow:0 8px 20px #0006;
+}
+
+/* Liens */
+.lienclic{
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.lienclic:hover{
+    background:var(--gold);
+    color:#fff;
+    border-color:var(--gold);
+    box-shadow:0 5px 15px #0006;
+    transform:translateY(-2px);
+}
+
+/* Cartes classiques */
+.card{
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.card:hover{
+    transform:translateY(-3px);
+    border-color:var(--gold);
+    box-shadow:0 8px 20px #0005;
+}
+</style>
+</head>
+<body>
+
+<header>
+<div><img src="image.png" height="500" alt="1" title="SUNNY WESTERN"> </div>
+<h1>Règlement & Guide RP</h1>
+<p>Bienvenue sur le règlement officiel de Sunny Western.</p>
+<a class="lienclic" href="https://discord.com/invite/sunny-western" target="_blank">
+    <img src="discordlogo.png" height="50" alt="Discord"><br> Discord du Serveur
+</a>
+<a class="lienclic" href="https://sunny-western-shop.tebex.io/" target="_blank">
+    <img src="logo shopping.webp" height="50" alt="Boutique"><br> Boutique du Serveur
+</a>
+<a class="lienclic" href="https://www.tiktok.com/@sunny.western?is_from_webapp=1&sender_device=pc" target="_blank">
+    <img src="tiktoklogo.webp" height="50" alt="TikTok"><br> TikTok du Serveur
+</a>
+</header>
+
+<div class="container">
+<aside class="menu">
+<button class="tab active" data-tab="welcome">🤠 Bienvenue</button>
+
+<div class="menu-group">
+<button class="menu-title">📚 Informations générales <span>⌄</span></button>
+
+<div class="menu-buttons">
+<button class="tab" data-tab="general">📜 Général</button>
+<button class="tab" data-tab="tips">💡 Trucs & Astuces</button>
+<button class="tab" data-tab="assist">💡 Assistance</button>
+<button class="tab" data-tab="lore">📜 Lore</button>
+<button class="tab" data-tab="lexique">📒 Lexique RP</button>
+</div>
+</div>
+
+<div class="menu-group">
+<button class="menu-title">📋 Gestion du personnage & RP <span>⌄</span></button>
+<div class="menu-buttons">
+<button class="tab" data-tab="wipe">☠️ Wipe Personnage</button>
+<button class="tab" data-tab="dossiers">✒️ Dossiers</button>
+<button class="tab" data-tab="entreprises">💼 Entreprises</button>
+<button class="tab" data-tab="illegal">🔫 Illégal</button>
+</div>
+</div>
+
+<div class="menu-group">
+<button class="menu-title">👥 Factions & métiers <span>⌄</span></button>
+<div class="menu-buttons">
+<button class="tab" data-tab="fdo">👮 FDO</button>
+<button class="tab" data-tab="medecins">🩺 Médecins</button>
+<button class="tab" data-tab="natifs">🏹 Natifs</button>
+<button class="tab" data-tab="enfants">👦 RP Enfants et Adolescents</button>
+</div>
+</div>
+
+<div class="menu-group">
+<button class="menu-title">🛒 Divers <span>⌄</span></button>
+<div class="menu-buttons">
+<button class="tab" data-tab="boutique">🪙 Boutique</button>
+</div>
+</div>
+
+</aside>
+
+</aside>
+
+<main class="content">
+
+<section class="panel active" id="welcome">
+<h2>🤠 Bienvenue</h2>
+<p>• Ce guide a pour objectif d'aider les <b>nouveaux arrivants</b> à découvrir les bases du RP (RolePlay) et à s'intégrer facilement au serveur.</p>
+<p>• Vous y trouverez les <b>informations essentielles</b> pour comprendre le fonctionnement du RP, les règles principales et les comportements à adopter afin de profiter pleinement de votre expérience.</p>
+<p>• Grâce à ce guide, vous pourrez <b>débuter sereinement</b>, éviter les erreurs les plus courantes et mieux comprendre les différentes situations que vous rencontrerez en jeu.</p>
+<p>• Que vous soyez totalement débutant ou que vous souhaitiez simplement <b>vous remettre à niveau</b>, ce document est conçu pour vous accompagner pas à pas.</p>
+
+<div class="menu-grid">
+<a href="#tips" class="menu-card" data-tab="tips">💡 Trucs & Astuces</a>
+<a href="#assist" class="menu-card" data-tab="assist">💡 Assistance</a>
+<a href="#lore" class="menu-card" data-tab="lore">📜 Lore</a>
+<a href="#lexique" class="menu-card" data-tab="lexique">📒 Lexique RP</a>
+<a href="#wipe" class="menu-card" data-tab="wipe">☠️ Wipe Personnage</a>
+<a href="#dossiers" class="menu-card" data-tab="dossiers">✒️ Dossiers</a>
+<a href="#entreprises" class="menu-card" data-tab="entreprises">💼 Entreprises</a>
+<a href="#illegal" class="menu-card" data-tab="illegal">🔫 Illégal</a>
+<a href="#fdo" class="menu-card" data-tab="fdo">👮 FDO</a>
+<a href="#medecins" class="menu-card" data-tab="medecins">🩺 Médecins</a>
+<a href="#natifs" class="menu-card" data-tab="natifs">🏹 Natifs</a>
+<a href="#enfants" class="menu-card" data-tab="enfants">👦 RP Enfants</a>
+<a href="#boutique" class="menu-card" data-tab="boutique">🪙 Boutique</a>
+</div>
+</section>
+
+<section class="panel" id="general">
+<h2>📜 Général</h2>
+<p>• Vous devez avoir minimum <b>16 ans</b> pour jouer.</p>
+<p>• <b>Le Fair Play est la règle de base du serveur.</b></p>
+<div class="notice" style="text-align: center;"><b>♦ Sans Fair Play, pas de Rôle Play ! ♦</b></div>
+<p>• Vous ne pouvez pas utiliser de <b>Prénom+Nom</b> de personnes fictives (film/série/animé,...), réelles, ou de jeu de mot. <b>(Exemple : Billy the Kid, John Wayne, Jean Peuplu, Jessy Karott, …)</b></p>
+<p>• <b>Le double vocal est interdit.</b></p>
+<p>• <b>Les allusions HRP sont interdites.</b></p>
+<p>• Les PNJ sont à considérer comme des <b>personnes vivantes</b>. Si un PNJ est abattu, il y a donc <b>meurtre</b>.</p>
+<p>• Il est interdit pour tous de <b>récupérer la tenue d’un joueur</b> sur lui pour l’essayer ou de lui demander de la mettre. Les noms sur les tenues <b>ne peuvent être pris en RP.</b></p>
+<p>• L’utilisation de <b>soundboard ou de voice mod</b> est soumise à accord staff.</p>
+<p>• Le langage doit être en adéquation avec <b>l’époque (Début XXe siècle)</b>. Les expressions type <b>« Wesh » ou « Frère »</b> sont donc interdites. Adaptez-vous au langage d’époque afin de ne pas casser votre immersion ni celle des autres.</p>
+<p>• Les propos <b>racistes, homophobes et misogynes hors RP</b> sont strictement interdits. Ils sont cependant tolérés en jeu du moment qu’ils restent <b>mesurés et cohérents</b>. Tout abus pourra être sévèrement sanctionné.</p>
+<p>• Toute <b>insulte ou humiliation</b> proférée à l’encontre d’un autre joueur sans justification RP dans le seul but de le blesser IRL pourra être sévèrement sanctionnée.</p>
+<p class="rule danger">• Les <b>scènes d’agressions sexuelles et de tortures extrêmes</b> sont strictement interdites. Les scènes de mutilation et de tortures légères et courtes <b>(10 minutes maximum)</b> sont possibles si elles sont <b>justifiées et validées par le staff avant</b> d’être mises à exécution.</p>
+<p>• <b>ALT F4</b> (ou toute autre manipulation pour se déconnecter volontairement) en cours de scène est interdit. Ceci est assimilé à <b>deux refus de scène.</b></p>
+<p>• Il est interdit de <b>parler lorsque vous êtes dans le coma</b>. Après le coma, vous vous rappelez de toute la scène. Il vous est cependant interdit de revenir sur la scène. Pour faire perdre la mémoire à quelqu’un, il y a d’autres façons RP d’y parvenir.</p>
+<p>• <b>Toute mort RP est soumise à validation staff</b>, vous devez donc déposer un dossier.</p>
+<p>• Lorsqu’un membre du staff est en jeu, il doit être considéré comme un <b>joueur lambda</b>. Aucune allusion à son rôle de staff ne doit être faite.</p>
+<p class="rule danger">• Tout <b>harcèlement, propos sexiste ou propos ayant pour unique but de salir quelqu’un</b> est strictement interdit et pourra être sévèrement sanctionné.</p>
+<p>• Vous ne pouvez pas interférer sur une <b>scène illégale (hors FDO)</b> si vous êtes un civil. Vous devez jouer votre <b>fear</b>. Tout manquement à cette règle conduira à une <b>sanction HRP et RP</b>, pouvant aller jusqu’à la <b>mort RP de votre personnage</b> si celui-ci tombe coma lors de la scène en question, même à cause d’un coup de sabot.</p>
+<p>• Il est interdit de <b>trash cadavre</b>. C’est suffisamment frustrant pour tout le monde de tomber coma, évitez d’en rajouter et gagnez avec dignité. Cela n’apporte aucune scène et ne fait que créer/nourrir la haine HRP.</p>
+<p>• <b>Il est interdit d’aller hors Map.</b></p>
+<p>• L’utilisation de <b>macro</b> est acceptée du moment que vous restez présent et réactif devant votre PC. Si vous devez vous absenter pour X raisons, mettez-vous dans un coin pour qu’on ne puisse pas vous voir.</p>
+<p>• L’utilisation du <b>lasso</b> doit se faire après plusieurs sommations, celle du <b>bolas</b> ne peut se faire qu’après <b>3 minutes montre en main de course poursuite.</b></p>
+<p>• Les villes, les entreprises, les postes de Shérifs/Police, le Gouvernement et le Palais de Justice sont des zones où le <b>Mass RP est à respecter.</b></p>
+<p>• Les <b>dispensaires, le Gouvernement et le Palais de Justice</b> sont des zones safe.</p>
+<p>• L’utilisation de <b>Pack graphique, cheat, ou les mentalités GF</b> sont susceptibles de Ban. (Je rappelle que nous sommes sur un serveur <b>Rôle Play et non PVP</b>).</p>
+<p>• L’utilisation de <b>Better Discord</b> peut être sanctionnée en cas d’utilisation pour obtenir des informations.</p>
+<h2>💬 Discord & RedM</h2>
+<p>• Lors de la création de votre personnage, pensez à mettre votre <b>Prénom & Nom RP</b> sur RedM (dans les paramètres en haut à droite) et sur votre profil Discord Sunny Western.</p>
+<p>• Le <b>respect entre les joueurs</b> de la communauté est primordial, merci donc de rester polis et courtois. Vous ne pouvez pas vous en prendre aux autres en cas de conflit.</p>
+<p>• Toute <b>divulgation d’informations RP</b> sur les salons Discord HRP est interdite.</p>
+<p>• En cas de soucis, vous pouvez demander de l’aide en <b>ticket</b>. Il est inutile de vous placer en salle d’attente sans y avoir été convié.</p>
+<p>• Merci de ne pas <b>ping le staff ni de leur envoyer des messages privés.</b> En cas de soucis, vous pouvez créer un ticket, une aide vous y sera alors apportée.</p>
+<p>• Toutes les <b>annonces Roleplay</b> doivent se faire dans les channels adéquats.</p>
+<p>• Tout serveur Discord créé pour la gestion de votre entreprise en jeu doit être donné au <b>Responsable Staff du Pôle Entreprise</b>, ce dernier devant avoir un rôle lui octroyant <b>toutes les permissions.</b></p>
+</section>
+
+<section class="panel" id="tips">
+<h2>🎮 Les Touches</h2>
+<p>• <b>Interface utilisateur :</b> F6 (autrement dit en RP : Francis)</p>
+<p>• <b>Sifflez votre cheval :</b> H</p>
+<p>• <b>Touche rapide :</b> X</p>
+<p>• <b>Inventaire :</b> I</p>
+<p>• <b>Ouvrir carte :</b> ,</p>
+<p>• <b>Interagir avec personne / objet :</b> Alt</p>
+<h2>🚦 Les Commandes (F8)</h2>
+<p>• <b>on/off</b> ⇾ Activer/Désactiver le mode cinématique</p>
+<p>• <b>me XXXXXX</b> ⇾ Permet de décrire des actions non visibles en RP. Remplacer XXXXX par du texte</p>
+<h2>🎈 Montgolfière</h2>
+<p>• <b>E</b> ⇾ Piloter la montgolfière</p>
+<p>• <b>Z, Q, S, D</b> ⇾ Déplacement avant/gauche/arrière/droite, en fonction du placement de votre boussole (<b>Z → Nord, S → Sud, Q → Ouest, D → Est</b>)</p>
+<p>• <b>Shift</b> ⇾ Monter</p>
+<p>• <b>Commande dans F6</b></p>
+<h2>📷 Appareil Photo</h2>
+<p>• <b>Flèche Droite / Flèche Gauche</b> ⇾ Filtre suivant / précédent</p>
+<p>• <b>Clic Droit + Clic Gauche</b> ⇾ Ouvre un menu pour imprimer la photo</p>
+<h2>📷 Appareil Photo sur Pied</h2>
+<p>• <b>Alt</b> ⇾ Filtre précédent</p>
+<p>• <b>^</b> ⇾ Filtre suivant</p>
+<h2>🔧 La HotBar</h2>
+<p>• Vous voulez afficher vos items pour y accéder plus rapidement ? Appuyez sur votre touche <b>« Page Up »</b>. Cela vous permettra de voir quels items sont dans vos raccourcis depuis vos touches <b>1 à 6</b>.</p>
+<h2>🔊 Le Chat Vocal</h2>
+<p>• N’oubliez pas d’activer votre <b>chat vocal en jeu</b> en appuyant sur <b>Echap → Paramètres → Audio</b>, puis de sélectionner <b>« Oui »</b> à <b>« Chat vocal actif »</b>.</p>
+<h2>🥇 Top Serveur</h2>
+<p>• <b>Citoyens de Sunny Western, le bureau du télégraphe confirme :</b></p>
+<p>• Chaque <b>vote top serveur pour la ville</b> vous rapporte une <b>prime en banque</b>. Les percepteurs ont modernisé la procédure : plus de pertes, plus d’oublis.</p>
+<h2>💰 Paiement des Votes</h2>
+<p>• <b>Du 1 au 15 du mois :</b> 30$ par vote</p>
+<p>• <b>Du 16 au 31 :</b> 20$ par vote</p>
+<p>• <b>+1 Token</b></p>
+<h2>📜 Comment Récupérer vos Primes ?</h2>
+<p>• En selle, entrez la commande <b>recupvote</b> dans votre <b>F8</b>.</p>
+<p>• Vous recevez aussitôt la somme sur votre <b>compte en banque</b>.</p>
+<p>• <b>Anti-spam du shérif :</b> 10 secondes entre deux demandes.</p>
+<h2>⏳ Et Si Je Vote Hors-Ligne ?</h2>
+<p>• Pas d’souci, étranger : vos votes sont <b>mis de côté</b>.</p>
+<p>• À votre retour en ville, tapez <b>/recupvote</b> et la banque crédite tout d’un coup.</p>
+<h2>🔔 Messages & Sécurité</h2>
+<p>• Vous verrez une <b>notification</b> à la remise.</p>
+<p>• Si la banque ne peut pas payer tout de suite (cas impossible), vos votes restent <b>en attente</b>, rien n’est perdu.</p>
+<h2>🪪 Important</h2>
+<p>• Les votes sont liés à votre <b>nom RP</b>.</p>
+<p>• Évitez de changer de nom juste après avoir voté, ou prévenez le <b>greffier (staff)</b> si c’est nécessaire.</p>
+<h2>❓ Problèmes Courants</h2>
+<p>• <b>« Je ne reçois pas mes $ quand je suis en ligne » ?</b></p>
+<p>• C'est normal, cela nécessite une <b>déconnexion/reconnexion</b> de votre part dans certains cas, mais ils seront toujours stockés. <b>Pas d'inquiétude.</b></p>
+<p>• <b>« J’ai voté, mais rien reçu »</b> → Connectez-vous et tapez <b>recupvote</b> dans votre <b>F8</b>.</p>
+<p>• Toujours rien ? Ouvrez un <b>ticket</b> avec :</p>
+<p>• <b>Votre nom RP exact</b></p>
+<p>• <b>L’heure approximative du vote</b></p>
+<p>• Si possible, une <b>preuve (capture)</b></p>
+<p>• <a href="https://top-serveurs.net/rdr/sunny-western" target="_blank"><b>🔗 Voter pour Sunny Western sur Top-Serveurs</b></a></p>
+</section>
+
+<section class="panel" id="assist">
+<h2>🏷️ Ouvrir un ticket</h2>
+<p>• Sur le serveur Discord Sunny, dans la catégorie <b>« STAFF »</b>, vous trouverez le salon <b>« 🌟Assistance »</b>.</p>
+<p>• Dans ce salon, plusieurs types de tickets se présentent à vous :</p>
+<p> <b>♦ Ticket Assistance</b></p>
+<p class="sub-rule">⇾ Choisissez ce ticket pour :</p>
+<p class="sub-rule-2">- un bug</p>
+<p class="sub-rule-2">- un souci de connexion</p>
+<p class="sub-rule-2">- une question sur le serveur</p>
+<p class="sub-rule-2">- une remontée ou demande quelconque, …</p>
+<p class="sub-rule">⇾ En cas de souci ou de bug, essayez de fournir des <b>screens et des recs</b> pour que nous puissions mieux évaluer le problème.</p>
+<p> <b>♦ Ticket Dossier</b></p>
+<p class="sub-rule">⇾ Choisissez ce ticket pour :</p>
+<p class="sub-rule-2">- une <b>mort RP</b></p>
+<p class="sub-rule-2">- une <b>création d’entreprise</b></p>
+<p class="sub-rule-2">- une <b>création de groupe illégal</b></p>
+<p class="sub-rule">⇾ Vous pouvez vous référer à la partie <b>« Dossiers »</b> pour savoir comment constituer le vôtre.</p>
+<p> <b>♦ Ticket Gestion de Scène</b></p>
+<p class="sub-rule">⇾ Choisissez ce ticket pour :</p>
+<p class="sub-rule-2">- un <b>souci avec une scène</b></p>
+<p class="sub-rule-2">- un <b>problème avec un autre joueur</b></p>
+<p class="sub-rule">⇾ Essayez toujours de montrer votre <b>point de vue à l’aide de rec</b>.</p>
+<p class="sub-rule-2">- Vous pouvez utiliser des logiciels comme <b>Medal, OBS, NVIDIA App, Outplayed</b>…</p>
+<p class="sub-rule-2">- Essayez de paramétrer vos applications afin que nous puissions <b>entendre correctement votre jeu et votre micro</b>.</p>
+<p> <b>♦ Ticket Stream</b></p>
+<p class="sub-rule">⇾ Choisissez ce ticket pour :</p>
+<p class="sub-rule-2">- une <b>question sur le streaming</b></p>
+<p class="sub-rule-2">- <b>obtenir le rôle streamer</b></p>
+<p class="sub-rule">⇾ Merci de rester <b>poli et courtois</b>. Le staff fera de son mieux pour vous répondre dans les <b>meilleurs délais</b>.</p>
+<p class="sub-rule">⇾ Essayez d’être le plus <b>clair et précis possible</b>, avec des <b>preuves de ce que vous avancez</b>.</p>
+<p class="sub-rule">⇾ <b>Sans réponse dans le ticket au bout de 24h, celui-ci sera clôturé.</b></p>
+</section>
+
+<section class="panel" id="lore">
+<h2>📜 Lore</h2>
+<p>• <i><b>Amérique, 1902.</b></i></p>
+<p><i>L'ère de l'Ouest sauvage touche à sa fin alors que les autorités ont décidé de <b>traquer les dernières bandes de hors-la-loi</b> qui sévissent encore.</i></p>
+<p><i>Ceux qui ne se rendent pas ou résistent sont <b>tués</b></i>.</p>
+<p><i>Les États-Unis deviennent le <b>premier producteur mondial de charbon</b>, devant la Grande-Bretagne. L'esclavagisme est aboli en 1865 mais il reste tout de même des Comtés qui utilisent toujours ce système et qui refusent toute marque de progression.</i></p>
+<p><i>L'État de Sunny se divise en <b>3 Pays.</b></i></p>
+<h2>🦅L’Amérique</h2>
+<p>• <i><b>Le Comté de Lemoyne :</i></b> Comté très porté sur l'ouverture d'esprit et culturelle, tout le monde est libre d'aller et venir dans le comté. La vie y est simple et on ressent la progression industrielle.</p>
+<p>• <i><b>Le Comté de New Hanover :</b></i> Comté que l'on peut considérer comme le poulain de Lemoyne. Un effort commun de la population est en cours pour en faire un comté progressiste.</p>
+<p>• <i><b>Le Comté de West Elizabeth :</b></i> Comté avant-gardiste en ce qui concerne la manière de vivre. Une omniprésence des nationalistes américains (confédérés) et des négriers est la raison pour laquelle les gens de couleurs et les Indiens ne sont pas acceptés dans le comté ; hormis les esclaves.</p>
+<p>• <i><b>Réserve Naturelle d'Ambarino :</b></i> Partie de l'État où les tribus indiennes ont pris pied. Aucune trace de civilisation urbaine. C'est une réserve où tout le monde peut vivre et cohabiter, mais attention à ne pas oublier les manières de vivre et traditions de certaines tribus qui protègent la faune, la flore et leurs traditions.</p>
+<h2>👒Le Mexique</h2>
+<p>• <i><b>Le Comté de New Austin :</b></i> Berceau de la population mexicaine, c'est un comté qui a été ravagé par la guerre de Sécession.</p>
+<h2>🏝️Guarma</h2>
+<p>• Autrefois connue comme une île hors-la-loi où bandits et exilés vivaient masqués, Guarma décide de rompre avec son passé clandestin. Sous l’impulsion de nouvelles autorités, l’île se structure et cherche à faire reconnaître son territoire par les gouvernements étrangers.</p>
+<p>• Les anciennes lois du silence disparaissent au profit d’une <b>véritable administration</b>. Guarma devient ainsi un <b>territoire légal</b>, où l’ordre et la justice règnent à l’instar des autres pays.</p>
+</section>
+
+<section class="panel" id="lexique">
+<h2>📒 Lexique RP</h2>
+<h3>Notions générales</h3>
+<p>• <b class="lexique-terme">RP - Role Play :</b> Le fait de jouer un rôle en incarnant un personnage.</p>
+<p>• <b class="lexique-terme">HRP - Hors Role Play :</b> Tout ce qui ne concerne pas le personnage dans le jeu. Toutes les discussions (oral ou écrite) n’ayant pas eu lieu en jeu sont HRP.</p>
+<p>• <b class="lexique-terme">Lore :</b> Ensemble des éléments historiques, géographiques, politiques et culturels qui constituent l’univers du serveur ou de votre personnage.</p>
+<p>• <b class="lexique-terme">Background :</b> L’histoire passée d’un personnage permettant d’expliquer son identité, son comportement, ses relations et ses motivations.</p>
+<p>• <b class="lexique-terme">Cohérence RP :</b> Le fait d’utiliser les termes adéquats, des tenues cohérentes et un gameplay en accord avec le lore et l’époque.</p>
+<p>• <b class="lexique-terme">Mort RP :</b> Le fait de mettre un terme définitif à un personnage en jeu. C’est une mort légitime validée par dossier auprès du staff.</p>
+<p>• <b class="lexique-terme">GF - Gun Fight :</b> Affrontement armé entre plusieurs personnages/groupes.</p>
+<h3>Connaissances et comportement</h3>
+<p>• <b class="lexique-terme">Fear RP :</b> Jouer sa peur lors d’une scène (exemples : face à un groupe plus nombreux ou face à des FDO, face à une arme pointée sur soi, au bord d’une falaise, …)</p>
+<p>• <b class="lexique-terme">Pain RP :</b> Jouer sa douleur suite à une blessure (exemples : après une chute, accident de charrettes, blessure par balle, …)</p>
+<p>• <b class="lexique-terme">Mass RP :</b> Le fait de prendre en compte la population dans son environnement et pas seulement le nombre de joueur sur le serveur (exemples : dans un poste de shérif il y a toujours du monde en service, même la nuit ou lorsque le poste est fermé, dans une ville il y a beaucoup de monde, même lorsqu’il n’y a pas de PNJ, …) Les PNJ doivent être considérés comme des joueurs à part entière.</p>
+<p>• <b class="lexique-terme">Lose RP :</b> Le fait d’accepter sa défaite dans une scène.</p>
+<h3>Interdictions strictes</h3>
+<p>• <i><b>Toutes les interdictions suivantes seront sanctionnées par le staff, pouvant aller jusqu’au bannissement définitif.</b></i></p>
+<p>• <b class="lexique-terme">No Fear :</b> Le fait d’oublier/de refuser de jouer sa peur.</p>
+<p>• <b class="lexique-terme">No Pain :</b> Le fait d’oublier/de refuser de jouer la douleur.</p>
+<p>• <b class="lexique-terme">FreeKill :</b> Le fait de tuer un joueur sans raison valable.</p>
+<p>• <b class="lexique-terme">Win RP :</b> Le fait de vouloir gagner toutes ses scènes à tout prix, en ne tenant pas compte du fair-play.</p>
+<p>• <b class="lexique-terme">Méta RP - Méta-Gaming :</b> Utilisation en RP d’informations obtenues HRP.</p>
+<p>• <b class="lexique-terme">Power-Gaming :</b> Le fait d’abuser d’actions faites en jeu qui sont impossibles à réaliser de manière réaliste ou cohérente dans la vie de tous les jours (exemple : sauter d’un toit en jeu ne fait que quelques dégâts au personnage, sauter d’un toit IRL peut te briser des os.)</p>
+<p>• <b class="lexique-terme">Force RP :</b> Le fait d’obliger le joueur en face à jouer le RP que nous souhaitons et de mener d’un bout à l’autre la scène sans laisser au joueur en face la possibilité d’agir correctement.</p>
+<p>• <b class="lexique-terme">Trash Corps/Trash Cadavre :</b> Le fait d’avoir une interaction négative avec un joueur coma et/ou de détériorer son corps (exemple : dire « il est vraiment nul en tir lui » ou l’insulter, tirer dans la tête/les membres pour les faire exploser, …)</p>
+<p>• <b class="lexique-terme">Mix :</b> Le fait de faire des allusions HRP en jeu, et de mélanger HRP et RP.</p>
+<p>• <b class="lexique-terme">Cop-Bait :</b> Le fait d’attirer ou de déranger les FDO dans le seul but de les emmerder.</p>
+<p>• <b class="lexique-terme">Carkill :</b> Le fait d’utiliser un moyen de locomotion (charrette, train, cheval,...) pour écraser volontairement et sans aucune raison valable un autre joueur jusqu’au coma.</p>
+<p>• <b class="lexique-terme">Revenge Kill :</b> Le fait de revenir sur une scène tuer quelqu’un qui nous a coma ou après une mort RP de retrouver l’auteur de cette mort avec un nouveau personnage pour se venger.</p>
+<p>• <b class="lexique-terme">Bunny Hopping :</b> Le fait de courir en sautant afin d’aller plus vite ou d’esquiver les balles lors d’un GF.</p>
+<p>• <b class="lexique-terme">Chicken Run :</b> Le fait de courir dans tous les sens en changeant de direction afin d’esquiver les balles dans un GF.</p>
+<p>• <b class="lexique-terme">Stream Hack :</b> L’utilisation d’un live/stream pour obtenir des informations pour alimenter son RP.</p>
+<p>• <b class="lexique-terme">Usebug :</b> L’exploitation volontaire de bug/glitch afin d’abuser d’une mécanique du jeu.</p>
+<p>• <b class="lexique-terme">Free Loot :</b> Le fait de fouiller un joueur sans scène préalable ni justification RP.</p>
+</section>
+
+<section class="panel" id="wipe">
+<h2>☠️ Wipe Personnage</h2>
+<p class="rule danger">• <b>Avant tout wipe, il est interdit de léguer, donner ou de faire tout autre don d'argent ou objets et ce, quelles que soient les raisons.</b> Des vérifications sont faites et la sanction encourue est un <b>bannissement temporaire</b> en cas de non-respect de cette règle.</p>
+<h2>⭕ Le Wipe est OBLIGATOIRE :</h2>
+<p>• Si vous souhaitez passer de <b>Shérif/Marshal/Gouvernement/Justice</b> vers l’<b>Illégal</b>.</p>
+<p>• Si vous souhaitez passer de l’<b>Illégal</b> chez les <b>Shérif/Marshal/Gouvernement/Justice</b>.</p>
+<p>• Un <b>changement de projet avec les membres de ce projet</b>. Ceci concerne bien sûr tous les membres.</p>
+<p>• Si vous souhaitez <b>quitter votre groupe pour en rejoindre un autre.</b></p>
+<p class="sub-rule">⇾ Avoir fait de l’illégal = contacts avec des groupes pour commerce, revente PNJ illégaux, braquages, etc.</p>
+<h2>❌ Le Wipe ne sera PAS OBLIGATOIRE</h2>
+<p>• Si vous partez d'un groupe pour faire du <b>civil</b> et que votre chef ne vous tue pas <b>(exclusivement du civil)</b>.</p>
+<p>• Si votre projet prend fin et que vous souhaitez continuer à faire de l’<b>illégal</b>. Vous serez libre de rejoindre un autre groupe tout en restant cohérent.</p>
+<h2>✅ Wipe terminé !</h2>
+<p>• Lorsque vous wipez, merci de <b>quitter tous les Discords</b> (<b>Légaux, Illégaux, Entreprises</b>...).</p>
+<p>• Si nous nous apercevons que vous restez sur des <b>Discords</b> après votre wipe, alors vous pourrez être <b>sanctionné</b>.</p>
+<h2>📜 Un wipe signifie :</h2>
+<p>• <b>Nouveau personnage</b> (aucun lien avec l’ancien)</p>
+<p>• <b>Nouvelles connaissances</b></p>
+<p>• <b>Nouvelle personnalité</b></p>
+<p>• <b>Nouvelles habitudes</b></p>
+<p>• <b>Nouveau comportement</b></p>
+<h2>🚫 Après un wipe, il est INTERDIT :</h2>
+<p>• De rejoindre l’<b>entreprise dans laquelle vous étiez</b> pour un délai de <b>1 semaine</b>.</p>
+<p>• De rejoindre le <b>groupe dans lequel vous étiez</b> pour un délai de <b>2 semaines</b>.</p>
+<p>• De <b>renouer immédiatement le contact avec les joueurs</b> dont vous étiez proches avec votre précédent personnage.</p>
+<p class="rule danger">• Si vous êtes inactif pendant <b>2 mois</b>, votre personnage sera <b>wipe automatiquement</b>. Aucune exception n'est possible, c'est automatique et nous ne pouvons pas changer cela.</p>
+</section>
+
+<section class="panel" id="dossiers">
+<h2>✒️ Dossiers</h2>
+<p>• Tous les dossiers doivent être sous forme de <b>GDoc ou Canva</b>.</p>
+<h3>💀 Dossier de mort RP</h3>
+<p>• Le dossier doit contenir :</p>
+<p class="sub-rule">⇾ L’<b>identité du joueur concerné</b></p>
+<p class="sub-rule">⇾ L’<b>identité du joueur faisant la demande</b></p>
+<p class="sub-rule">⇾ Le <b>contexte RP</b> : comment le conflit a commencé, depuis combien de temps, les gros événements importants, le tout justifié par des preuves <b>(rec ou pigeons par exemple)</b>.</p>
+<p class="sub-rule">⇾ L’explication de pourquoi la <b>mort du personnage est cohérente</b>.</p>
+<p class="sub-rule">⇾ Les <b>portes de sortie</b> que le joueur pourra choisir de prendre (elles doivent être raisonnables et fairplay).</p>
+<p class="sub-rule">⇾ Le <b>type de scène souhaité</b> ainsi que le lieu.</p>
+<p class="sub-rule">⇾ Les <b>gens potentiellement présents</b> sur la scène.</p>
+<p class="rule danger">⚠️ <b>Aucun élément provenant de Discord ne sera accepté.</b></p>
+<p class="rule danger">⚠️ Si un <b>lead projet</b> dépose un dossier contre l’un de ses membres, la <b>porte de sortie n’est pas obligatoire</b>.</p>
+<p>• N’oubliez pas : un dossier de mort RP fonctionne dans les <b>deux sens</b>. <b>Si votre cible vous met coma lors de la scène, votre personnage sera mort RP.</b></p>
+<h3>🔫 Dossier de création de Groupe</h3>
+<p>• Le dossier doit contenir :</p>
+<p class="sub-rule">⇾ Le <b>Nom du Groupe</b> (aucun nom connu fictif ou réel ne sera accepté).</p>
+<p class="sub-rule">⇾ Les <b>membres déjà dedans</b> (<b>minimum 5</b>).</p>
+<p class="sub-rule">⇾ Le <b>Lore de votre groupe</b> (qui explique l’orientation illégal de vos personnages).</p>
+<p class="sub-rule">⇾ Les <b>différents grades</b> (exemple : Chef, Bras Droit, Lieutenants, Recrues, …).</p>
+<p class="sub-rule">⇾ Les <b>objectifs à court/moyen/long terme</b>.</p>
+<p class="sub-rule">⇾ Les <b>activités déjà faites avec votre groupe</b> (preuves avec recs et pigeons par exemple).</p>
+<p class="sub-rule">⇾ Le <b>type de business souhaité</b>.</p>
+<p class="sub-rule">⇾ La <b>région dans laquelle vous souhaitez installer votre QG</b>.</p>
+<h3>🏤 Dossier d’Entreprise</h3>
+<h4>Création de nouvelle entreprise :</h4>
+<p>• Le dossier doit contenir :</p>
+<p class="sub-rule">⇾ Une <b>présentation globale de l'entreprise</b>.</p>
+<p class="sub-rule">⇾ Ce qu'elle <b>apportera au serveur</b>.</p>
+<p class="sub-rule">⇾ Comment elle serait <b>rentable</b> (avec un exemple de comptabilité).</p>
+<p class="sub-rule">⇾ La <b>position</b> que vous souhaitez lui donner sur la map.</p>
+<p class="sub-rule">⇾ Les <b>items qui seraient vendus</b> et comment ils s'intégreront sur le plateau avec les autres entreprises (avec idées de prix, d’images, etc).</p>
+<p class="sub-rule">⇾ Les <b>différents grades prévus</b>.</p>
+<h4>Reprise d'entreprise déjà existante :</h4>
+<p>• Le dossier doit contenir :</p>
+<p class="sub-rule">⇾ Une <b>présentation de votre personnage</b>.</p>
+<p class="sub-rule">⇾ Un <b>organigramme</b> (l’organisation de vos effectifs et la hiérarchie).</p>
+<p class="sub-rule">⇾ Vos <b>objectifs court/long/moyen terme</b>.</p>
+<p class="sub-rule">⇾ Des <b>affiches</b> (ouverture, recrutement, événement, etc).</p>
+<p class="sub-rule">⇾ Vos <b>idées d'événements</b> pour faire vivre l’entreprise et son comté.</p>
+<p class="sub-rule">⇾ Un <b>exemple de comptabilité</b>.</p>
+<h3>💡 Nouveau Craft/Item</h3>
+<p>• Le dossier doit contenir :</p>
+<p class="sub-rule">⇾ Une <b>présentation du Craft/Item</b>.</p>
+<p class="sub-rule">⇾ <b>Pourquoi l’ajouter ?</b></p>
+<p class="sub-rule">⇾ Votre <b>idée de recette</b> (quels items sont utilisés, en quelle quantité, combien d’étapes sont nécessaires).</p>
+<p class="sub-rule">⇾ Le <b>coût de fabrication</b> (en vous basant sur les prix du plateau) ainsi que son <b>prix de commercialisation</b>.</p>
+<p class="sub-rule">⇾ Le <b>visuel de l’item souhaité</b> (si vous avez déjà une idée, en <b>1200x1200</b>).</p>
+</section>
+
+<section class="panel" id="entreprises">
+<h2>💼 Entreprises :</h2>
+<p>• <b>Le nombre de personnes par entreprise est limité :</b></p>
+<p>• <i>Fermes - Mines - Cotonnerie - Raffinerie - Distillerie</i></p>
+<p class="sub-rule">⇾ <b>22 personnes</b> au total, avec patron/co-patron compris.</p>
+<p>• <i>Ranch - Forge</i></p>
+<p class="sub-rule">⇾ <b>16 personnes</b> au total, avec patron/co-patron compris.</p>
+<p>• <i>Saloon - Armurerie</i></p>
+<p class="sub-rule">⇾ <b>10 personnes</b> au total, avec patron/co-patron compris.</p>
+<p>• Le <b>double-emploi</b> est autorisé sous certaines conditions :</p>
+<p class="sub-rule">⇾ Les <b>Patrons</b> peuvent avoir le double emploi si c’est pour la <b>Mairie</b> ou si c’est pour un poste sans responsabilité.</p>
+<p class="sub-rule">⇾ Les <b>Gardes du Gouv/PDJ/Mairie</b> peuvent avoir le double emploi si c’est pour un poste sans responsabilité.</p>
+<p class="sub-rule">⇾ Les <b>Membres du Gouv/PDJ/FDO/Médecin</b> sont interdits au double emploi.</p>
+<p class="sub-rule">⇾ Les <b>Civils non patrons</b> peuvent cumuler deux emplois, du moment que l'un des deux est sans responsabilité.</p>
+<p class="sub-rule">⇾ <b>Sans responsabilité</b> = Hors Patron / Co-Patron / Responsable-Gérant.</p>
+<p class="sub-rule">⇾ Tout <b>abus concernant les permissions des grades en jeu</b> sera sanctionné par une saisie de l’entreprise.</p>
+<p>• Tout patron a l'obligation de garder son <b>entreprise active</b> afin d'assurer son bon fonctionnement.</p>
+<p>• En cas d'<b>absence prolongée de plus de 48h</b>, le patron se doit de nommer un gérant afin que l'activité ne cesse pas et ne soit pas saisie.</p>
+<p>• La <b>donation/revente/cession d’entreprise</b> à un autre joueur n’est pas possible.</p>
+<p>• Le prix des items doit être <b>cohérent à l’économie du serveur</b>. Si vous avez un doute, consultez le staff. Des <b>pénalités RP</b> seront appliquées à votre entreprise si nous constatons un abus.</p>
+<p>• Un patron peut faire de l’<b>illégal</b>, au risque de perdre son entreprise.</p>
+<p>• Un garde (<b>Gouvernement, Palais de Justice, Mairie</b>) peut faire partie d’un groupe illégal, à ses risques et périls (<b>possible Mort RP</b>). Un membre du <b>Gouvernement de Guarma</b> peut faire de l’illégal sous accord du staff.</p>
+<p>• Le nombre de <b>patrons d'entreprise est limité à 4 par Groupe Illégal</b> (hors service public).</p>
+<p>• Tout serveur Discord créé pour la gestion de vos entreprises en jeu doit être donné au <b>Responsable Staff du Pôle Entreprise</b>, ce dernier devant avoir un rôle lui octroyant <b>toutes les permissions (administrateur)</b>.</p>
+<h2>🏫 Création, Reprise entreprises :</h2>
+<p>• <b>Création de nouvelle entreprise :</b> vous devez avoir au minimum <b>un mois d'activité sur le serveur</b> (tout personnage confondu) et <b>pas d'avertissement en cours</b>. Une fois ces deux conditions remplies, vous pouvez soumettre un dossier en RP au <b>maire du comté concerné</b> ou gouverneur si celui-ci n'est pas disponible.</p>
+<p class="sub-rule">⇾ Une fois votre dossier soumis, vous obtiendrez une réponse dès que celui-ci aura été étudié.</p>
+<p>• <b>Reprise d'entreprise déjà existante :</b> suite à un communiqué posté par le maire, vous pouvez lui déposer un dossier en RP. Les délais pour les dépôts et réponses sont annoncés par le maire sur ses communiqués. Il est inutile d'ouvrir un ticket de dossier et d'y déposer votre dossier. <b>Tout est transmis par le maire.</b></p>
+<p class="rule danger">• <b>Il est impossible de racheter, donner, léguer une entreprise à un autre joueur.</b> Un changement de propriétaire passe obligatoirement par un <b>appel à dossier fait par le maire</b>. Ceci pour éviter les changements de propriétaires toutes les semaines et les entreprises délaissées.</p>
+</section>
+
+<section class="panel" id="illegal">
+<h2>🔫 Illégal</h2>
+<h3>📜 Règlement général groupe</h3>
+<p class="rule danger">• <b>Il est strictement interdit de fournir des informations au Shérif et/ou Marshal</b>, sauf en cas d’interrogatoire.</p>
+<p>• Dans ce cas, vous êtes tenus de <b>coopérer en donnant un minimum d’informations</b> et de jouer votre <b>Fear FDO</b>.</p>
+<p>• Toute <b>action illégale doit être assumée et revendiquée</b>. Portez vos couleurs avec fierté et honneur.</p>
+<p class="rule danger">• Il est strictement <b>INTERDIT de dévoiler un point ou une information illégale gratuitement</b>.</p>
+<p>• En cas de <b>mort RP</b>, un membre illégal ne peut pas rejoindre son ancien groupe avant <b>15 jours</b>.</p>
+<p>• Si une personne agit <b>masquée</b>, vous ne pouvez pas l’identifier.</p>
+<p class="rule danger">• Aucune <b>alliance</b> n’est autorisée entre groupes, et encore moins entre les FDO et les groupes illégaux.</p>
+<p class="sub-rule">⇾ Cependant, vous pouvez <b>missionner un autre groupe contre une somme d’argent</b>, à condition que cela reste cohérent et justifié en RP.</p>
+<p>• Il est interdit d'<b>humilier une personne gratuitement</b> (le mettre tout nu, le rouler dans la boue, lui uriner dessus ou lui faire dire des choses ridicules...).</p>
+<p>• Un groupe illégal peut avoir jusqu’à <b>20 membres</b>. Cependant : un convoi ne peut pas être supérieur à <b>15 membres</b> et pas de remplacement si coma.</p>
+<p>• Tout serveur Discord créé pour la gestion de votre groupe illégal en jeu doit être donné au <b>Responsable Staff du Pôle Illégal</b>, ce dernier devant avoir un rôle lui octroyant <b>toutes les permissions (administrateur)</b>.</p>
+<p>• Que vous soyez plus que les FDO ou non, le <b>Fear doit être présent</b>. Vous ne pouvez pas, parce qu’ils sont moins que vous, ne pas les considérer et ne pas avoir peur.</p>
+<p>• Vous pouvez prendre jusqu’à <b>3 otages</b>, mais pas plus d’un <b>Shérif, membre du Gouv/PDJ ou Marshal</b> en otage, pour des raisons évidentes de fair-play.</p>
+<h4>⚖️ Équilibre des effectifs en convoi</h4>
+<p>• Les convois restent limités à <b>15 personnes maximum</b>. En cas de supériorité numérique d’un côté, qu’il s’agisse des <b>FDO ou des illégaux</b>, le camp le plus nombreux doit faire partir des membres afin d’arriver à <b>nombre égal</b>.</p>
+<p class="sub-rule">⇾ Exemple : 13 illégaux face à 6 shérifs → <b>7 illégaux doivent quitter la scène</b>.</p>
+<p class="sub-rule">⇾ Exemple : 14 FDO face à 8 illégaux → <b>6 FDO doivent quitter la scène</b>.</p>
+<p class="rule danger">• Les membres ayant quitté la scène ont <b>strictement interdiction d’y retourner</b>, notamment pour participer à une éventuelle embuscade ou à toute autre action liée à la scène.</p>
+<p>• Cette règle a pour objectif de garantir un <b>rapport de force équilibré</b> et de permettre à chacun de jouer la scène dans de bonnes conditions.</p>
+<h4>⚔️ Hiérarchie Illégale IG</h4>
+<p>• <b>GM (Pègre)</b></p>
+<p>• <b>Organisation</b> (<b>20 membres maximum</b>)</p>
+<p>• <b>Famille</b> (<b>15 membres maximum</b>)</p>
+<p>• <b>Petite Main</b> (<b>10 membres maximum</b>)</p>
+<h4>📋 Pré-requis</h4>
+<p>• Avoir <b>5 membres actifs minimum</b>.</p>
+<p>• Se faire connaître en RP par le biais d’<b>activités illégales</b> (braquages, pillages, rencontres illégales, contacts, …).</p>
+<p>• Avoir fourni au Staff un <b>dossier sous forme Canva ou GDoc</b> dont les détails devront être mis dedans.</p>
+<h3>🏙️ Mass RP et Zone Safe</h3>
+<p class="rule danger">• Les <b>villes, les entreprises, les postes de Shérifs/Police, le Gouvernement et le Palais de Justice</b> sont des zones où le <b>Mass RP est à respecter</b>.</p>
+<p class="rule danger">• Les <b>dispensaires, le Gouvernement et le Palais de Justice</b> sont des <b>zones safe</b>.</p>
+<p>• Pour ce qui est des actions en ville ou dans les entreprises et postes de Shérif, elles sont faisables du moment qu’elles sont <b>justifiées et cohérentes</b>.</p>
+<p>• Les <b>Zones safe</b> ne sont plus considérées comme telles si vous avez déposé un dossier ayant reçu l’accord du staff pour une attaque. Celle-ci doit être <b>cohérente et justifiée</b>.</p>
+<p>• Si un joueur se trouve dans un <b>dispensaire</b>, il vous sera impossible d’aller le chercher, de même pour les bâtiments du <b>Gouvernement/Palais de Justice</b>.</p>
+<p>• En revanche, pour les <b>postes de Shérif/Police</b>, si vous êtes plus de <b>10</b>, vous pouvez entrer dans le bâtiment.</p>
+<p class="rule danger">• Merci de respecter : le <b>Fear, le Mass RP et le Fair-Play</b>. Tout abus, action injustifiée ou manque de Fear (braquer un individu seul devant un saloon en ville, alors qu’il y a des joueurs autour), sera sévèrement sanctionné.</p>
+<h3>💀 Activités Illégales</h3>
+<h4>🏢 Braquage d’entreprise</h4>
+<p>• Toutes les entreprises sont braquables uniquement pour des marchandises entre <b>19h30 et 1h00 du matin</b>.</p>
+<p>• Vous pouvez voler jusqu'à <b>200$ maximum de marchandises</b> (les armes ne peuvent être volées). Nous vous demandons de ne pas atteindre ce maximum si vous n'en avez pas besoin pour une question de fair-play.</p>
+<p>• Vous devez être <b>minimum 5</b> pour braquer une entreprise.</p>
+<p>• Vous pouvez prendre jusqu’à <b>3 otages</b>, mais pas plus d’un <b>Shérif, membre du Gouv/PDJ ou Marshal</b> en otage, pour des raisons évidentes de fair-play.</p>
+<p>• Vous ne pouvez pas négocier le <b>retrait total des Shérifs</b> ni demander d’argent contre les otages.</p>
+<p>• Les <b>PNJ ne sont pas des otages</b>.</p>
+<p>• Si un joueur tombe dans le <b>coma</b>, il ne peut pas être remplacé ou revenir.</p>
+<p>• Si la mairie publie un communiqué annonçant que l’entreprise a été braquée, celle-ci ne pourra plus être braquée pendant <b>7 jours</b>.</p>
+<p>• <b>Deux braquages d’entreprise par semaine et par groupe</b> sont autorisés.</p>
+<h4>🏦 Braquage de Banque</h4>
+<p>• Les braquages de banque sont réalisables à partir de <b>8 membres</b>, <b>1 fois par semaine</b>. Les FDO doivent essayer d’être à nombre égal (pour éviter 15 Shérifs contre 8 bandits).</p>
+<p>• Vous pouvez prendre jusqu’à <b>3 otages</b>, mais pas plus d’un <b>Shérif, membre du Gouv/PDJ ou Marshal</b> en otage, pour des raisons évidentes de fair-play.</p>
+<p>• Les <b>PNJ ne sont pas des otages</b>.</p>
+<p>• Vous ne pouvez pas négocier le <b>retrait des forces de l’ordre</b> ni d’argent.</p>
+<p>• Les braquages doivent être lancés entre <b>21h et minuit</b>.</p>
+<p>• Après avoir pris le dernier butin, vous devez attendre <b>5 minutes montre en main</b> avant de pouvoir fuir, afin d’attendre que les FDO puissent intervenir.</p>
+<p>• Si un joueur tombe <b>coma</b>, il ne peut pas être remplacé ou revenir sur la scène.</p>
+<h4>🪴 Plantation de drogue</h4>
+<p>• Vous pouvez planter où bon vous semble, du moment que ce n’est pas <b>hors map</b> ou dans des endroits <b>Win RP</b>.</p>
+<p>• Vous pouvez payer en <b>argent ou en drogue</b> un gang pour planter et/ou protéger votre champ de drogue.</p>
+<p>• N’importe quel groupe illégal, s’il trouve votre plantation, peut la récupérer. Si les <b>Forces de l’Ordre</b> la trouvent, ils peuvent également la saisir ou la détruire.</p>
+<p>• Vous n’avez pas la possibilité de prendre des <b>otages</b> pour réaliser des plantations.</p>
+<p>• Vous pouvez être au maximum <b>15 membres sur la plantation</b> et <b>1 groupe seulement en simultané</b>.</p>
+<h4>💎 Mission pierre taillée</h4>
+<p>• Pas plus de <b>3 par jour entre 21h et 00h00</b>, tous taillés confondus.</p>
+<p>• Vous n’avez pas la possibilité de prendre des <b>otages</b> pour réaliser ce genre de mission.</p>
+<h4>🎰 Braquage du Casino</h4>
+<p>• Pas plus de <b>1 par jour entre 21h et 00h00</b>.</p>
+<p>• Vous n’avez pas la possibilité de prendre des <b>otages</b> pour réaliser ce genre de mission.</p>
+<h4>📦 Livraison de contrebande</h4>
+<p>• La livraison peut être effectuée à <b>deux livreurs maximum</b>.</p>
+<p>• Vous n’avez pas la possibilité de prendre des <b>otages</b> pour ce genre de livraison.</p>
+<p>• Si un joueur tombe dans le <b>coma</b>, il ne peut pas être remplacé ou revenir sur la scène.</p>
+<p>• L’utilisation des <b>bolas</b> est autorisée après <b>3 minutes de course-poursuite</b>.</p>
+<p>• Vous pouvez livrer de la contrebande même quand les Postes sont fermés. En revanche, si vous faites exprès d’attendre qu’ils soient fermés pour le faire, vous serez <b>sanctionné et tout votre stock sera supprimé</b>.</p>
+<h4>🪦 Pillage de tombes</h4>
+<p>• Les pilleurs ne peuvent agir que par <b>deux maximum</b>, toujours face à <b>deux Shérifs maximum</b>.</p>
+<p>• Si un joueur tombe dans le <b>coma</b>, il ne peut pas être remplacé ou revenir sur la scène.</p>
+<p>• Vous pouvez piller des tombes même quand les Postes sont fermés. En revanche, si vous faites exprès d’attendre qu’ils soient fermés pour en faire, vous serez <b>sanctionné et tout votre stock sera supprimé</b>.</p>
+<p>• Les pillages de tombes sont interdits entre <b>3h du matin et 13h de l’après-midi</b> (sauf si Poste ouvert).</p>
+<h4>🏪 Braquage d’épicerie</h4>
+<p>• Le braquage peut être effectué à <b>deux braqueurs maximum</b>.</p>
+<p>• Vous pouvez prendre jusqu’à <b>2 otages</b>, mais pas plus d’un <b>Shérif, membre du Gouv/PDJ ou Marshal</b> en otage, pour des raisons évidentes de fair-play.</p>
+<p>• Une fois le braquage terminé, vous devez attendre <b>5 minutes, montre en main</b>, pour permettre aux Shérifs/Policiers d’intervenir. Parmi les 3 Shérifs qui interviennent, deux sont dédiés à l’interception des braqueurs (2v2) et le dernier pour la surveillance des otages.</p>
+<p>• Si un joueur tombe dans le <b>coma</b>, il ne peut pas être remplacé ou revenir sur la scène.</p>
+<p>• Vous ne pouvez pas négocier le <b>retrait total des Shérifs</b> ni demander d’argent contre les otages.</p>
+<p>• Les <b>PNJ ne sont pas des otages</b>.</p>
+<p>• L’utilisation des <b>bolas</b> est autorisée après <b>3 minutes de course-poursuite</b>.</p>
+<p>• Vous pouvez braquer les épiceries même quand les Postes sont fermés. En revanche, si vous faites exprès d’attendre qu’ils soient fermés pour le faire, vous serez <b>sanctionné et tout votre stock sera supprimé</b>.</p>
+<p>• Les braquages d’épiceries sont interdits entre <b>3h du matin et 13h de l’après-midi</b> (sauf si Poste ouvert).</p>
+<h4>🏠 Braquage de maison</h4>
+<p>• Les braquages de maisons sont limités à <b>3 braqueurs</b>. Parmi les 4 Shérifs qui interviennent, trois sont dédiés à l’interception des braqueurs (3v3) et le dernier pour la surveillance des otages.</p>
+<p>• L’utilisation des <b>bolas est interdite avant 3 minutes de course-poursuite</b>.</p>
+<p>• Vous ne pouvez pas négocier le <b>retrait total des Shérifs</b> ni demander d’argent contre les otages.</p>
+<p>• Les <b>PNJ ne sont pas des otages</b>.</p>
+<p>• Si un joueur tombe <b>coma</b>, il ne peut pas être remplacé ou revenir sur la scène.</p>
+<p>• Une fois le braquage terminé, vous devez attendre <b>5 minutes, montre en main</b>, pour permettre aux Shérifs/Policiers d’intervenir. Parmi les 4 Shérifs qui interviennent, deux sont dédiés à l’interception des braqueurs (3v3) et le dernier pour la surveillance des otages.</p>
+<h2>⛔ Interruption de scène</h2>
+<p class="rule danger">• Si un groupe est en pleine scène de <b>braquage, prise d’otage ou autre activité illégale</b>, il est interdit pour un autre groupe de venir intervenir sans raison RP valable.</p>
+</section>
+
+<section class="panel" id="fdo">
+<h2>👮 Sheriff / Marshal / Gouvernement / Justice</h2>
+<h3>📜 Principes généraux</h3>
+<p>• Toute personne étant ou ayant été membre du <b>service public</b> (Sheriff, Marshal, Gouvernement, Guardia, Milice, Palais de Justice) doit respecter ce règlement.</p>
+<p>• Le <b>Fair-Play est fondamental</b> : chaque action doit créer une scène, laisser une chance et enrichir l’histoire RP.</p>
+<p>• Objectifs d’un <b>Sheriff/Marshal</b> : sauver des vies et maintenir l’ordre.</p>
+<h4>🤝 Prise d’otage</h4>
+<p>• Lors d’une <b>prise d’otage</b> → priorité absolue à la <b>sauvegarde de la vie de l’otage</b>.</p>
+<h4>🏦 Braquages</h4>
+<p>• Lors d’un <b>braquage</b> (banque, maison, entreprise ou épicerie) → priorité absolue à la <b>sauvegarde de la vie de l’otage</b>.</p>
+<p class="sub-rule">⇾ Si aucun otage n’est présent, vous n'êtes pas obligés de respecter les négociations, tout en restant <b>fair-play</b>.</p>
+<h4>🔫 Engagement des FDO</h4>
+<p>• Les FDO peuvent <b>engager le feu</b> face aux bandits si ces derniers abattent un otage ou ont un comportement agressif envers les FDO (<b>manque flagrant de Fear FDO</b>).</p>
+<h4>⚖️ Rôle du Marshal</h4>
+<p>• Un <b>Marshal</b> c’est l’élite de la loi, il se doit d’être irréprochable et d’un sérieux à faire transpirer qui que ce soit.</p>
+<h4>📋 Nomination du Shérif en chef</h4>
+<p>• La <b>nomination d’un Shérif en chef</b> se fait par validation Staff, avec un dossier donné en RP au Gouvernement.</p>
+<h3>⚖️ Illégal & Corruption</h3>
+<p class="rule danger">• Les membres des <b>FDO/Gouvernement/Palais de Justice</b> ne peuvent en aucun cas pratiquer d’activités illégales.</p>
+<p class="rule danger">• La <b>corruption est strictement interdite</b> (Shérif, Police, Marshal, Guardia, Milice, Gouvernement, PDJ).</p>
+<p class="rule danger">• Tout départ vers l’illégal impose un <b>wipe obligatoire du personnage</b>.</p>
+<h4>🚫 Activités considérées comme illégales</h4>
+<p>• Sont considérés comme illégaux : <b>rendez-vous clandestins, trafic de substances, meurtre, vol, braquage</b>, etc.</p>
+<h3>🔒 Arrestations et détention</h3>
+<p>• <b>Temps maximum en cellule : 30 minutes.</b></p>
+<p>• Obligation de <b>justification RP</b> pour chaque arrestation, fouille, perquisition ou saisie.</p>
+<h4>🚫 Interdictions</h4>
+<p class="rule danger">• Interdiction de fouiller ou demander un cheval <b>sans raison valable</b>.</p>
+<h3>🔫 Engagement des forces de l’ordre</h3>
+<h4>⚠️ Utilisation des armes</h4>
+<p>• Les <b>armes sont un dernier recours</b>.</p>
+<p class="rule danger">• Les armes létales sont interdites contre les <b>personnes non armées</b>.</p>
+<h4>🔫 GunFight et poursuites</h4>
+<p>• Engagement GunFight uniquement si <b>aucune autre issue</b>, et ce après <b>3 sommations claires en poursuite</b>.</p>
+<p>• En cas de <b>fusillade désespérée</b> (otages, situation critique) → exposition possible à une <b>mort RP si coma</b>.</p>
+<h4>🚔 Convois</h4>
+<p>• <b>Maximum de 15 personnes</b> lors d’un convoi.</p>
+<h4>⭕ Bolas</h4>
+<p>• Les <b>Bolas</b> sont utilisables seulement après <b>3 minutes</b>.</p>
+<p>• Les Bolas sont <b>interdites en GunFight</b> et doivent être utilisées uniquement en course-poursuite.</p>
+<h3>🔎 Enquêtes & Fair-Play</h3>
+<h4>📋 Enquêtes</h4>
+<p>• Toute enquête doit être accompagnée de <b>preuves</b> (témoignages datés et signés, photos, casier judiciaire).</p>
+<h4>🕵️ Informateurs</h4>
+<p>• Informateurs : <b>pas d’abus d’informations</b>. Faites-les vérifier par vos responsables de pôles (FDO/Justice).</p>
+<h4>🚔 Renforts</h4>
+<p>• Renforts : <b>temps de réaction réaliste</b>, pas d’arrivée instantanée en masse.</p>
+<h4>🚪 Porte de sortie</h4>
+<p>• Les illégaux doivent toujours avoir une <b>chance d’évasion</b> (<b>porte de sortie</b>).</p>
+<h4>🪦 Pillages de tombes</h4>
+<p>• Pillages de tombes : obligation de <b>créer une scène RP</b>, pas d’arrestation immédiate.</p>
+<h4>⚖️ Équilibre des effectifs en convoi</h4>
+<p>• Les convois restent limités à <b>15 personnes maximum</b>. En cas de supériorité numérique d’un côté, qu’il s’agisse des <b>FDO ou des illégaux</b>, le camp le plus nombreux doit faire partir des membres afin d’arriver à <b>nombre égal</b>. Les membres quittant la scène ont <b>strictement interdiction d’y retourner</b>, notamment pour participer à une éventuelle embuscade ou à toute autre action liée à la scène.</p>
+<h3>🏙️ Zones & Limitations</h3>
+<h4>🚫 Interdictions</h4>
+<p>• <b>Camper</b> près d’un lieu illégal (passeur, plantation, etc.).</p>
+<p>• <b>Reconnaître une personne masquée.</b></p>
+<p>• <b>S’allier avec un groupe illégal.</b></p>
+<h4>🏙️ Mass RP et Zones Safe</h4>
+<p class="rule danger">• Les <b>villes, les entreprises, les postes de Shérifs/Police, le Gouvernement et le Palais de Justice</b> sont des zones où le <b>Mass RP est à respecter</b>.</p>
+<p class="rule danger">• Les <b>dispensaires, le Gouvernement et le Palais de Justice</b> sont des <b>zones safe</b>.</p>
+<p>• Pour ce qui est des actions en ville ou dans les entreprises et postes de Shérif, elles sont faisables du moment qu’elles sont <b>justifiées et cohérentes</b>.</p>
+<p>• Les <b>Zones safe</b> ne sont plus considérées comme telles s’il y a un dossier ayant reçu l’accord du Staff pour une attaque. Celle-ci doit être <b>cohérente et justifiée</b>.</p>
+<p>• Si un joueur se trouve dans un <b>dispensaire</b>, il est impossible d’aller le chercher, de même pour les bâtiments du <b>Gouvernement/Palais de Justice</b>.</p>
+<p>• En revanche, pour les <b>postes de Shérif/Police</b>, si le groupe est plus de <b>10</b>, ils peuvent entrer dans le bâtiment.</p>
+<h3>🏛️ Organisation interne au Gouvernement</h3>
+<h4>🗳️ Élections et Maires</h4>
+<p>• Les <b>Maires</b> sont élus pour <b>2 mois renouvelables</b>. Les élections sont organisées par le <b>Gouverneur et/ou les Juges</b>.</p>
+<p>• Les maires gèrent leur <b>comté</b> et peuvent instaurer des <b>décrets en accord avec le Palais de Justice</b>.</p>
+<h4>👤 Absence d’un responsable</h4>
+<p>• En cas d’<b>absence de plus de 48h</b> d’un chef, un remplaçant doit être nommé.</p>
+<div class="notice" style="text-align:center;"><i>“La loi n’est pas une arme, mais un devoir. Celui qui la porte doit l’incarner avec honneur.”</i></div>
+</section>
+
+<section class="panel" id="medecins">
+<h2>🩺 Médecins</h2>
+<h3>🏥 Principes généraux</h3>
+<p>• Les médecins peuvent faire une <b>demande de mort RP sous forme de dossier</b>, si une personne a subi trop de blessures dans un temps réduit.</p>
+<p>• Les médecins ne peuvent pas <b>soigner les autres joueurs en dehors de leur service</b>.</p>
+<p>• Le médecin peut faire de l’<b>illégal</b>, mais doit rester <b>cohérent</b>. Un médecin est avant tout une personne qui aime aider les autres.</p>
+<h3>🚑 Soins et réanimations</h3>
+<p>• Les médecins ne peuvent pas <b>réanimer ou soigner un joueur pendant une scène illégale</b>. Ils peuvent intervenir après la scène.</p>
+<p class="rule danger">• Les <b>réanimations et soins minutes</b> sont strictement interdits.</p>
+<h3>🚂 Sunny Express</h3>
+<p>• Le <b>Sunny Express</b> ne peut être utilisé que pour <b>aller sur une intervention</b>.</p>
+<p class="rule danger">• Tout manquement à cette règle sera sanctionné par le <b>retrait DÉFINITIF</b> du Sunny Express.</p>
+<h3>📋 Nomination du Chef de Dispensaire</h3>
+<p>• La <b>nomination d’un Chef de Dispensaire</b> se fait par validation Staff, avec un dossier donné en RP au Gouvernement.</p>
+</section>
+
+<section class="panel" id="natifs">
+<h2>🏹 Règlement Natif Sunny Western</h2>
+<h3>📜 Introduction</h3>
+<p>• Ce règlement est propre aux <b>personnages natifs</b> du serveur et vise à garantir une immersion respectueuse et cohérente de la culture amérindienne en RP.</p>
+<p>• Il vient en complément du <b>règlement principal de Sunny Western</b>, qui reste la référence prioritaire et complète pour l’ensemble du serveur.</p>
+<h3>🪶 Cohérence RP</h3>
+<p>• Les natifs doivent rester cohérents vis-à-vis de leur <b>culture, de leur histoire personnelle ou de leur tribu</b>.</p>
+<p>• Le Roleplay natif du serveur est basé sur la période <b>1840</b>, bien que le plateau de jeu se passe en 1902. Prenez donc cette époque comme référence pour vos RP respectifs.</p>
+<p>• Que vous incarniez un <b>natif nomade ou membre d’une tribu</b>, votre RP doit rester fidèle à l’esprit des tribus amérindiennes.</p>
+<p>• Il est possible d’incarner un <b>Amérindien intégré à la société américaine</b>, mais dans ce cas vous ne bénéficierez pas des attributs natifs et serez considéré comme un citoyen lambda.</p>
+<h3>🌎 Origines des personnages natifs</h3>
+<p>• Les personnages natifs doivent être originaires des <b>terres d’Amérique du Nord</b>, du Canada jusqu’au sud du Mexique.</p>
+<p class="rule danger">• Tout personnage originaire d’une zone située en dehors de ce territoire ne sera pas accepté avec le rôle natif sur le serveur.</p>
+<h3>⚖️ Lois de l'État</h3>
+<p>• Les natifs sont tenus de respecter les <b>lois mises en place dans les Comtés</b>.</p>
+<p>• Ils restent toutefois autorisés à défendre leur territoire selon leurs propres règles dans les <b>réserves natives</b> ou suivant les accords avec le gouvernement américain dans le <b>comté d’Ambarino</b>.</p>
+<h3>⚖️ Peines et jugements</h3>
+<p>• Un natif peut être <b>condamné de la même manière qu’un Américain</b>.</p>
+<p>• Toute infraction commise sur un territoire <b>américain, mexicain ou guarméen</b> est jugée selon les lois locales.</p>
+<h3>🔫 Achat et possession d’armes</h3>
+<p>• Les natifs ne peuvent pas acheter d’<b>armes à feu en armurerie sans carte d’identité</b>.</p>
+<p>• Toutefois, un armurier peut choisir de vendre <b>sous le manteau ou via troc</b>.</p>
+<p>• Le joueur natif doit également rester cohérent et ne pas avoir <b>en permanence sur lui des armes à feu</b>.</p>
+<h3>🏹 Ventes d’armes natives</h3>
+<p>• Les natifs ont l’<b>exclusivité de la fabrication des armes traditionnelles</b>.</p>
+<p>• Leurs ventes seront autorisées à leur bon vouloir.</p>
+<h3>🪶 Armes dites sacrées</h3>
+<p>• Les <b>arcs robustes, les lances, les masses natives et les tomahawks anciens</b> sont des armes réservées aux natifs.</p>
+<p class="rule danger">• Ces armes ne doivent <b>jamais être vendues ou données</b>.</p>
+<h3>🧪 Potions et produits natifs</h3>
+<p>• La vente de potions est <b>strictement encadrée</b>.</p>
+<p>• Seules les <b>potions de l’oubli</b> peuvent être commercialisées, avec un prix fixé en RP.</p>
+<p>• Les autres potions <b>(force, purification, cataplasmes, etc.)</b> sont interdites à la vente, sauf troc exceptionnel entre tribus.</p>
+<h3>💼 Les métiers possibles pour les natifs</h3>
+<p>• Tout natif du pays, qu’il soit en tribu ou nomade, peut exercer seulement une partie des métiers du plateau afin de conserver une <b>cohérence RP</b>.</p>
+<h4>🏡 Entreprises que vous pouvez posséder ou dans lesquelles vous pouvez travailler</h4>
+<p class="sub-rule">⇾ <b>Ferme</b></p>
+<p class="sub-rule">⇾ <b>Ranch</b></p>
+<p class="sub-rule">⇾ <b>Boucherie</b></p>
+<p class="sub-rule">⇾ <b>Pêcherie</b></p>
+<h4>🔨 Entreprises dans lesquelles vous pouvez seulement travailler</h4>
+<p class="sub-rule">⇾ <b>Cotonnerie</b></p>
+<p class="sub-rule">⇾ <b>Mine</b></p>
+<p class="sub-rule">⇾ <b>Forge</b></p>
+<p class="sub-rule">⇾ <b>Verrerie</b></p>
+<p class="sub-rule">⇾ <b>Distillerie</b> (récolte seulement)</p>
+<h3>🪶 Obtention du rôle nomade</h3>
+<p>• À la création de votre personnage, vous devez demander au <b>staff</b>, via <b>ticket + background</b>, le rôle de natif.</p>
+<p>• Celui-ci vous donne accès aux <b>attributs natifs</b>.</p>
+<h3>🏕️ Création d’une tribu</h3>
+<p>• Vous pouvez faire une demande de création de tribu à partir de <b>5 membres actifs</b> sur le serveur.</p>
+<p>• Il vous sera demandé de réaliser un <b>dossier</b> et d’ouvrir un <b>ticket dossier</b> sur le Discord Sunny Western.</p>
+<p>• Pour toutes questions, n’hésitez pas à faire appel au <b>pôle natif</b> pour vous aiguiller.</p>
+<h3>🏕️ Règle Nomade</h3>
+<p>• Votre camp de base est situé sur le <b>Mount Hagen</b>.</p>
+<p class="rule danger">• Vous ne pouvez en aucun cas revendiquer ce camp comme votre propriété.</p>
+<p>• Vous bénéficiez d’un <b>coffre à accès libre</b> dans ce camp.</p>
+<p>• Chacun est responsable de ses biens. <b>Aucun remboursement ne sera réalisé par le staff</b> en cas de perte ou de vol dans ce coffre.</p>
+<h3>🎒 Règles de possession nomades</h3>
+<p class="rule danger">• Il est interdit pour un nomade de posséder toute forme d’<b>armes sacrées</b> ou de <b>potions</b>, à l’exception des cataplasmes troqués avec une tribu ou de la potion de l’oubli.</p>
+<p>• Cette règle ne s’applique pas aux <b>nomades ayant déjà fait partie d’une tribu</b>.</p>
+<h3>💰 Ventes et commerce nomade</h3>
+<p class="rule danger">• Il est interdit à tout nomade de <b>vendre des armes sacrées et des potions</b>.</p>
+<p>• Ces objets sont uniquement réservés aux <b>tribus installées</b>.</p>
+<p class="rule danger">• La vente de ces objets sera <b>sévèrement réprimandée par le staff</b>.</p>
+<p>• Les nomades sont libres de vendre des <b>armes fabriquées par leurs soins</b> dans le camp de Mount Hagen aux citoyens rencontrés dans la rue.</p>
+<p>• Ils peuvent également vendre leurs <b>plantes</b>.</p>
+<h3>🪶 Armes sacrées</h3>
+<p>• Il est demandé à toute tribu que l’obtention d’une arme dite sacrée se fasse <b>uniquement par rituel</b>.</p>
+<p>• Pour des raisons de cohérence, ces objets ne sont pas à prendre à la légère.</p>
+<p>• Leur <b>rareté et leur valeur spirituelle</b> doivent être respectées.</p>
+<h3>⚔️ Tribu de Guerre</h3>
+<p class="rule danger">• Les tribus de guerre comme les <b>Apaches, Comanches, Cheyennes, etc.</b> sont désormais interdites.</p>
+<p class="rule danger">• <b>Aucun dossier de tribu de guerre ne sera accepté.</b></p>
+<p class="rule danger">• Dans le cas où une tribu change son Lore pour devenir une « Tribu de Guerre » ou qu’elle devienne trop tournée vers les <b>GF</b>, celle-ci sera automatiquement <b>dissoute et Force Wipe</b>.</p>
+<h3>🔫 Règles illégales des tribus</h3>
+<h4>💀 L’illégal pour les tribus</h4>
+<p>• Chaque tribu est libre de faire de l’<b>illégal ou non</b>.</p>
+<p>• C’est au chef de tribu de définir dans le <b>dossier de création de la tribu</b> l’orientation de celle-ci.</p>
+<p>• Tous les membres doivent se conformer au <b>choix fait dans le dossier</b>.</p>
+<h4>💼 Business illégaux</h4>
+<p>• Une tribu peut bénéficier de <b>crafts illégaux</b> uniquement sur dossier présenté au staff par ticket, tout en restant cohérent avec le <b>RP natif</b>.</p>
+<h4>🧪 Utilisation de cataplasmes et kits natifs</h4>
+<p class="rule danger">• Il est interdit d’utiliser un <b>kit ancestral pour réanimer</b> lors d’une scène illégale toujours en cours. Cela est considéré comme un <b>retour sur scène</b>.</p>
+<p class="rule danger">• L’abus de <b>cataplasmes lors d’affrontements illégaux</b> (ex. : gunfights contre joueurs, pierres taillées…) sera sanctionné par le staff.</p>
+<h3>📜 Conclusion</h3>
+<p>• Ce règlement a pour but de <b>valoriser et préserver l’identité native</b> tout en gardant un cadre clair et équilibré pour le RP.</p>
+<p>• Respectez-le afin d’enrichir vos scènes et de vivre pleinement l’expérience immersive <b>Sunny Western</b>.</p>
+</section>
+
+<section class="panel" id="enfants">
+<h2>👦🏻 RP Enfants et Adolescents</h2>
+<h3>🚫 Interdiction du RP enfant</h3>
+<p class="rule danger">• Le <b>RP enfant est interdit</b> sur le serveur.</p>
+<h3>👤 Âge et taille du personnage</h3>
+<p>• Votre personnage doit être âgé de <b>minimum 16 ans</b>.</p>
+<p>• Votre personnage ne peut pas mesurer moins de <b>1m60</b>.</p>
+<p class="sub-rule">⇾ Une exception peut être demandée auprès du <b>staff via ticket</b>, accompagnée d’un <b>background</b>.</p>
+<h3>🔫 Port d’armes</h3>
+<p class="rule danger">• Le port d’<b>armes d’épaule</b> est interdit aux personnages de moins de <b>18 ans</b>, pour des raisons de cohérence RP.</p>
+<h3>🎭 Cohérence RP</h3>
+<p>• Vous devez réagir comme un <b>enfant de l’âge de votre personnage</b>.</p>
+<p>• Si vous souhaitez jouer au <b>Cow-Boy</b>, privilégiez plutôt l’incarnation d’un personnage adulte.</p>
+<h3>📜 Lois et réglementation</h3>
+<p>• Veuillez lire les <b>différents textes de lois</b> avant d’envisager ce type de RP afin de vérifier si celui-ci vous conviendrait ou non.</p>
+</section>
+
+<section class="panel" id="boutique">
+<h2>🪙 Boutique</h2>
+<h3>🛍️ Présentation</h3>
+<p>• Envie d’un <b>véhicule non disponible en jeu</b> ? D’un <b>animal de compagnie original</b> ? D’une <b>arme unique</b> ? Ou tout simplement d’un petit coup de pouce pour commencer plus facilement votre RP sur Sunny ?</p>
+<p>• Visitez notre <b>boutique</b> !</p>
+<h3>⚙️ Comment ça fonctionne ?</h3>
+<p>• Choix sur le site.</p>
+<p>• Achat de <b>Tokens</b>.</p>
+<p>• Compte <b>CFX lié</b>.</p>
+<p>• Vérification des Tokens avec <b>F6</b>.</p>
+<p>• Sélection de l’item avec <b>F6</b>.</p>
+<h3>⚠️ Règle principale</h3>
+<p class="rule danger">• Il est <b>interdit d’utiliser un avantage donné par la boutique afin de générer de l’argent en jeu</b>, afin de préserver l’économie du serveur. La boutique ne constitue pas un <b>pay to win</b>.</p>
+<h3>🪙 Sunny Tokens</h3>
+<p>• Les <b>Tokens ne sont pas transférables entre personnages après un wipe</b>.</p>
+<p class="rule danger">• Il est interdit de <b>revendre des Tokens en jeu</b> contre quoi que ce soit.</p>
+<p>• L’envoi de Tokens est uniquement autorisé afin de <b>les offrir à un autre joueur</b>.</p>
+<h3>🎈 Montgolfière</h3>
+<p>• La montgolfière est <b>liée à votre licence</b> et vous la conservez après un wipe.</p>
+<p class="rule danger">• Il est interdit d’en tirer une <b>contrepartie financière en jeu</b>, par exemple par le biais d’une location ou d’une vente.</p>
+<p class="rule danger">• Il est interdit d’utiliser la montgolfière pour <b>faire de l’illégal ou pour effectuer du service pour les forces de l’ordre</b>.</p>
+<p class="rule danger">• Toute utilisation abusive de la montgolfière entraînera sa <b>suppression</b>.</p>
+<h3>🛥️ Bateau</h3>
+<p>• Le bateau est <b>lié à votre licence</b> et vous le conservez après un wipe.</p>
+<p class="rule danger">• Il est interdit d’en tirer une <b>contrepartie financière en jeu</b>, par exemple par le biais d’une location ou d’une vente.</p>
+<p class="rule danger">• Il est interdit d’utiliser le bateau pour <b>faire de l’illégal ou pour effectuer du service pour les forces de l’ordre</b>.</p>
+<p class="rule danger">• Toute utilisation abusive du bateau entraînera sa <b>suppression</b>.</p>
+<h3>🐾 Animaux de compagnie</h3>
+<p class="rule danger">• Il est interdit de <b>revendre vos animaux de compagnie</b> aux autres joueurs.</p>
+<p>• Vous pouvez cependant <b>en offrir sans aucune contrepartie</b>.</p>
+<p class="rule danger">• Si vous tuez votre animal de compagnie, <b>il vous sera retiré</b>.</p>
+<p class="rule danger">• Si vous décidez de <b>wipe</b>, vous perdez vos animaux de compagnie.</p>
+<h3>🎫 Tickets à gratter</h3>
+<p class="rule danger">• Il est interdit de <b>revendre les tickets à gratter</b> aux autres joueurs.</p>
+<p>• Vous pouvez cependant <b>en offrir sans aucune contrepartie</b>.</p>
+<h3>🛍️ Comment acheter des Tokens ?</h3>
+<h4>1. 🛒 Accéder à la boutique</h4>
+<p>• Rendez-vous sur la <a href="https://sunny-western-shop.tebex.io/" target="_blank" rel="noopener noreferrer"><b>boutique officielle Sunny Western</b></a>.</p>
+<p>• Avant de procéder à l’achat, assurez-vous que <b>votre compte Cfx est bien lié à votre compte sur la boutique</b>.</p>
+<h4>2. 🪙 Choisir et acheter vos Tokens</h4>
+<p>• Sélectionnez le <b>montant de Tokens</b> que vous souhaitez acheter, puis procédez au paiement.</p>
+<p>• Une fois le paiement effectué, veuillez patienter <b>quelques minutes</b> afin que les Tokens soient crédités en jeu.</p>
+<h4>3. 🎁 Utiliser vos Tokens en jeu</h4>
+<p>• Une fois vos Tokens reçus, connectez-vous en jeu et ouvrez la <b>boutique à l’aide de la touche F6</b>.</p>
+<p>• Vous arriverez alors sur la page de la boutique.</p>
+<p>• Pour utiliser vos Tokens et acheter des objets, rendez-vous dans l’onglet <b>« Acheter »</b>.</p>
+<p>• Vous pourrez ainsi sélectionner les <b>items disponibles</b> et les acheter directement avec vos Tokens.</p>
+</section>
+
+</main>
+</div>
+
+<script>
+(function () {
+
+    const buttons = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.menu-card');
+    const panels = document.querySelectorAll('.panel');
+
+    function show(id) {
+
+        // Affiche la bonne section
+        panels.forEach(function (panel) {
+            panel.classList.toggle('active', panel.id === id);
+        });
+
+        // Active le bouton correspondant dans le menu
+        buttons.forEach(function (button) {
+            button.classList.toggle(
+                'active',
+                button.getAttribute('data-tab') === id
+            );
+        });
+
+        // Remonte en haut du contenu
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Boutons du menu de gauche
+    buttons.forEach(function (button) {
+        button.addEventListener('click', function () {
+            show(button.getAttribute('data-tab'));
+        });
+    });
+
+    // Cartes de la page Bienvenue
+    cards.forEach(function (card) {
+        card.addEventListener('click', function (event) {
+
+            event.preventDefault();
+
+            const id = card.getAttribute('data-tab');
+
+            if (id) {
+                show(id);
+            }
+        });
+    });
+
+    // Menus déroulants
+    document.querySelectorAll('.menu-title').forEach(function (title) {
+
+        title.addEventListener('click', function () {
+
+            const group = title.parentElement;
+
+            // Ferme les autres menus
+            document.querySelectorAll('.menu-group').forEach(function (otherGroup) {
+                if (otherGroup !== group) {
+                    otherGroup.classList.remove('open');
+                }
+            });
+
+            // Ouvre / ferme celui sélectionné
+            group.classList.toggle('open');
+        });
+
+    });
+
+})();
+</script>
+</body>
+</html>
